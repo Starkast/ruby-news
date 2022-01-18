@@ -14,6 +14,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Checkout ruby/ruby
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          path: ruby
+          repository: ruby/ruby
+
+      - name: Create git log
+        working-directory: ./ruby
+        run: git log --name-status v3_0_3..v3_1_0 > ../_data/3.1.0.gitlog
+
       - name: Setup Ruby and install dependencies
         uses: ruby/setup-ruby@v1
         with:

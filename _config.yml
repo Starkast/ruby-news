@@ -1,0 +1,8 @@
+title: Ruby News
+exclude:
+  - Rakefile
+  - README.md
+  - _data
+
+rubies:
+  - 3.1.0
