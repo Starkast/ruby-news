@@ -14,7 +14,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Cache Ruby checkout
+        id: cache-ruby
+        uses: actions/cache@v2
+        with:
+          path: ruby
+          key: ruby_v3_1_0
+
       - name: Checkout ruby/ruby
+        if: steps.cache-ruby.outputs.cache-hit != 'true'
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
